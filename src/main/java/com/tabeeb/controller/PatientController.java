@@ -4,6 +4,7 @@ import com.tabeeb.entity.Patient;
 import com.tabeeb.service.PatientService;
 import com.tabeeb.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,9 +18,9 @@ public class PatientController {
     private PatientService patientService;
 
     @PostMapping("/patient/register")
-    public ResponseEntity<String> registerUser(@RequestBody @Valid Patient patientUser) {
+    public ResponseEntity<Void> registerUser(@RequestBody @Valid Patient patientUser) {
         patientService.createPatientUser(patientUser);
-        return ResponseEntity.ok(Constant.SUCCESS_USER_CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
     @GetMapping("/patient")
