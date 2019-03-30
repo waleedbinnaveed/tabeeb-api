@@ -15,4 +15,7 @@ public interface PatientRepository extends JpaRepository<Patient,Long> {
 
     @Query("select p from Patient p where p.doctor.user.uuid=:doctorUuid")
     List<Patient> findByDoctorUuid(@Param("doctorUuid") String doctorUuid);
+
+    @Query("select p from Patient p where p.user.username=:username")
+    Optional<Patient> fetchByUsername(@Param("username") String username);
 }

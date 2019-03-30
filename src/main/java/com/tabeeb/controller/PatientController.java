@@ -34,6 +34,11 @@ public class PatientController {
         return ResponseEntity.ok(patientService.fetchPatient(uuid));
     }
 
+    @GetMapping("/patient/{username}/username")
+    public ResponseEntity<Patient> getPatientByUsername(@PathVariable("username") String username) {
+        return ResponseEntity.ok(patientService.fetchPatientByUsername(username));
+    }
+
 
     @PutMapping("/patient/{uuid}/diagnose")
     public ResponseEntity<String> addDiagnose(@PathVariable("uuid") String uuid,

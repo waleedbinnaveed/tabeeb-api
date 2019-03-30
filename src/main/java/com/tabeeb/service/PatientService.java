@@ -77,4 +77,12 @@ public class PatientService {
         doctorService.fetchDoctor(doctorUuid); //validation doctor uuid
       return patientRepository.findByDoctorUuid(doctorUuid);
     }
+
+    public Patient fetchPatientByUsername(String username) {
+        Optional<Patient> patient = patientRepository.fetchByUsername(username);
+        if(!patient.isPresent())
+            throw new ApplicationException(Constant.ERROR_PATIENT_DOES_NOT_EXIST);
+
+        return patient.get();
+    }
 }
