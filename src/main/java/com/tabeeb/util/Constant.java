@@ -24,6 +24,13 @@ public final class Constant {
     public static final String SIGN_UP_URL_DOCTOR = "/api/doctor/register";
     public static final String SIGN_UP_URL_PATIENT = "/api/patient/register";
     public static final String HOSPITAL_URL = "/api/hospital";
+    public static final String SWAGGER_UI = "/swagger-ui.html/**";
+    public static final String SWAGGER_UI_RESOURCES = "/swagger-resources/**";
+    public static final String CONFIG = "/configuration/**";
+    public static final String V2_API_DOCS = "/v2/api-docs";
+    public static final String WEBJARS = "/webjars/**";
+
+
 
 
 }
