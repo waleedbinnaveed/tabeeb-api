@@ -1,6 +1,8 @@
 package com.tabeeb.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.tabeeb.dto.AuthDTO;
 import com.tabeeb.entity.User;
 import com.tabeeb.exception.ApplicationException;
 import com.tabeeb.util.Constant;
@@ -17,6 +19,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -59,6 +62,21 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .signWith(SignatureAlgorithm.HS256, Constant.SECRET)
                 .compact();
         response.addHeader(Constant.HEADER_STRING,Constant.TOKEN_PREFIX + token);
+
+        AuthDTO authDTO = new AuthDTO();
+        authDTO.setToken(token);
+        authDTO.setUsername(((org.springframework.security.core.userdetails.User) authResult.getPrincipal()).getUsername());
+
+        String authDTOString = new Gson().toJson(authDTO);
+
+        PrintWriter out = response.getWriter();
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        out.print(authDTOString);
+        out.flush();
+
+
+
     }
 }
 
