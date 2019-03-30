@@ -37,4 +37,10 @@ public class UserController {
         return ResponseEntity.ok(userService.fetchUser(uuid));
     }
 
+    @GetMapping("/user/{username}/username")
+    public ResponseEntity<User> fetchUserByUserName(@PathVariable("username") String username)
+    {
+        return ResponseEntity.ok(userService.findByUserName(username).get());
+    }
+
 }
