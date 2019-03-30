@@ -34,7 +34,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http.cors().and()
                 .csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.POST, Constant.SIGN_UP_URL,Constant.SIGN_UP_URL_DOCTOR,Constant.SIGN_UP_URL_PATIENT,Constant.HOSPITAL_URL).permitAll()
-                .antMatchers(HttpMethod.GET, Constant.HOSPITAL_URL,Constant.SWAGGER_UI,Constant.CONFIG,Constant.WEBJARS,Constant.CONFIG,Constant.SWAGGER_UI_RESOURCES,Constant.V2_API_DOCS).permitAll()
+                .antMatchers(HttpMethod.GET, Constant.HOSPITAL_URL,Constant.DOCTOR_URL ,Constant.SWAGGER_UI,Constant.CONFIG,Constant.WEBJARS,Constant.CONFIG,Constant.SWAGGER_UI_RESOURCES,Constant.V2_API_DOCS).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))

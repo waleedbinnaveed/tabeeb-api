@@ -31,6 +31,5 @@ public final class Constant {
     public static final String WEBJARS = "/webjars/**";
 
 
-
-
+    public static final String DOCTOR_URL = "/api/doctor" ;
 }
