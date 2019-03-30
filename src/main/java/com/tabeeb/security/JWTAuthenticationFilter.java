@@ -66,7 +66,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         AuthDTO authDTO = new AuthDTO();
         authDTO.setToken(token);
         authDTO.setUsername(((org.springframework.security.core.userdetails.User) authResult.getPrincipal()).getUsername());
-
+        authDTO.setAuthorities(((org.springframework.security.core.userdetails.User) authResult.getPrincipal()).getAuthorities());
         String authDTOString = new Gson().toJson(authDTO);
 
         PrintWriter out = response.getWriter();

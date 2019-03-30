@@ -2,8 +2,10 @@ package com.tabeeb.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 
 @Getter
@@ -20,5 +22,5 @@ public class AuthDTO implements Serializable {
     private String mobileNo;
     private String userType;
     private String uuid;
-
+    private Collection<GrantedAuthority> authorities;
 }
