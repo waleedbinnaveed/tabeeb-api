@@ -5,6 +5,7 @@ import com.tabeeb.service.HospitalService;
 import com.tabeeb.util.Constant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,10 +20,10 @@ public class HospitalController {
     @Autowired private HospitalService hospitalService;
 
     @PostMapping("/hospital")
-    public ResponseEntity<String> createHospital(@RequestBody @Valid Hospital hospital)
+    public ResponseEntity<Void> createHospital(@RequestBody @Valid Hospital hospital)
     {
         hospitalService.createHospital(hospital);
-        return ResponseEntity.ok(Constant.SUCCESS_HOSPITAL_CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
     @GetMapping("/hospital")
