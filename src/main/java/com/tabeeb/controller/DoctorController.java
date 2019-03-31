@@ -33,6 +33,11 @@ public class DoctorController {
         return ResponseEntity.ok(doctorService.fetchDoctor(uuid));
     }
 
+    @GetMapping("/doctor/{username}/username")
+    public ResponseEntity<Doctor> getDoctorByUserName(@PathVariable("username") String username){
+        return ResponseEntity.ok(doctorService.fetchDoctorByUserName(username));
+    }
+
     @GetMapping("/doctor/hospital/{hospital-uuid}")
     public ResponseEntity<List<Doctor>> getHospitalDoctors(@PathVariable("hospital-uuid") String hospitalUuid) {
         return ResponseEntity.ok(doctorService.fetchDoctorsByHospital(hospitalUuid));
