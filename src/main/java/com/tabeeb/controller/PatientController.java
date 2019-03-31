@@ -41,12 +41,12 @@ public class PatientController {
 
 
     @PutMapping("/patient/{uuid}/diagnose")
-    public ResponseEntity<String> addDiagnose(@PathVariable("uuid") String uuid,
+    public ResponseEntity<Void> addDiagnose(@PathVariable("uuid") String uuid,
                                               @RequestParam("diagnose") String diagnose,
                                               @RequestParam("doctor-uuid") String doctorUuid) {
         patientService.addDiagnose(uuid, doctorUuid, diagnose);
 
-        return ResponseEntity.ok(Constant.SUCCESS_DIAGNOSE_ADDED);
+        return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
     @GetMapping("/patient/doctor/{doctor-uuid}")
